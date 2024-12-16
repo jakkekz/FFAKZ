@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tournament Results</title>
+    <link rel="stylesheet" href="app.css">
+    <link rel="stylesheet" href="results.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/flag-icon-css/3.5.0/css/flag-icon.min.css">
+</head>
+<body>
+    <div class="header-container">
+        <h1>Tournament Results</h1>
+        <!-- Link to open in existing tab -->
+        <a href="index.html" class="nav-button">Back to Players</a>
+    </div>
+
+    <div class="page-container">
+        <!-- Left column for point assignment -->
+        <div class="assignments-container">
+            <h2>Input players (in order):</h2>
+            <form id="pointAssignmentForm">
+                <!-- Dynamic inputs will be generated here -->
+            </form>
+        </div>
+
+        <!-- Right column for results -->
+        <div class="results-container">
+            <table class="results-table">
+                <thead>
+                    <tr>
+                        <th>Rank</th>
+                        <th>Player Name</th>
+                        <th>Points</th> <!-- Removed Country column -->
+                    </tr>
+                </thead>
+                <tbody id="resultsBody">
+                    <!-- Results will be dynamically populated here -->
+                </tbody>
+            </table>
+        </div>
+        <div class="results-container">
+            <table class="results-table">
+                <!-- ... (table structure remains the same) ... -->
+            </table>
+    </div>
+
+
+<!-- Move the button outside of the page-container -->
+<div class="reset-button-container">
+    <button id="revertButton" class="revert-button" type="button">↶ undo</button>
+    <button id="redoButton" class="redo-button" type="button">redo ↷</button>
+    <button id="resetAllPointsButton" type="button">Reset All</button>
+</div>
+
+    <script src="results.js"></script>
+</body>
+</html>

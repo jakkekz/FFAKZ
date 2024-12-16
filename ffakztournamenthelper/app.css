@@ -1,0 +1,191 @@
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0; /* Remove padding from body */
+    background-color: #2c2c2c;
+    min-height: 100vh; /* Use min-height to ensure full screen height */
+    display: flex;
+    flex-direction: column;
+    align-items: center; /* Center items horizontally */
+}
+h1 {
+    color: rgb(255, 255, 255);
+    text-align: center;
+    margin-top: 5px; /* Add some space from the top */
+}
+.page-content {
+    margin-top: 5px; /* Add margin to push content below the fixed header */
+}
+.center-container {
+    display: flex;
+    justify-content: center; /* Center horizontally */
+    position: absolute; /* Position absolutely within the header container */
+    top: 20px; /* Adjust this value to position vertically from the top */
+    left: 50%; /* Center horizontally */
+    transform: translateX(-50%); /* Correct centering by moving left by half its width */
+}
+/* Ensure the rest of your styles remain unchanged */
+.players-container {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 20px;
+}
+.form-container {
+    max-width: 500px;
+    min-width: 500px; /* Add this to prevent shrinking */
+    margin: 0 auto 40px auto; 
+    background-color: #fff;
+    padding: 20px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    border-radius: 8px;
+    box-sizing: border-box; /* Add this */
+}
+
+.form-container label {
+    display: block;
+    margin-bottom: 5px;
+    font-weight: bold;
+}
+
+.form-container input, .form-container select {
+    width: 100%;
+    padding: 8px;
+    margin-bottom: 15px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}
+
+.form-container button {
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 4px;
+    cursor: pointer;
+    width: 100%;
+}
+
+.form-container button:hover {
+    background-color: #45a049;
+}
+
+.player-list {
+    margin-top: 30px;
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+}
+
+.player-item {
+    padding: 8px;
+    background-color: #fff;
+    border: 1px solid #ddd;
+    margin: 5px 0;
+    border-radius: 4px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.flag-icon {
+    margin-right: 10px;
+}
+
+/* New delete button styles */
+.delete-player {
+    background-color: red;
+    color: white;
+    border: none;
+    font-size: 0.7rem;
+    padding: 2px 5px;
+    border-radius: 3px;
+    margin-left: 10px;
+    cursor: pointer;
+}
+.nav-button {
+    position: absolute; /* Position it relative to the nearest positioned ancestor */
+    top: 20px; /* Adjust as needed */
+    right: 20px; /* Adjust as needed */
+    background-color: #007bff; /* Button color */
+    color: white; /* Text color */
+    border: none;
+    padding: 10px 20px;
+    border-radius: 4px;
+    text-decoration: none; /* Remove underline from link */
+    font-weight: bold;
+}
+
+.nav-button:hover {
+    background-color: #0056b3; /* Darker shade on hover */
+}
+.delete-player:hover {
+    background-color: darkred;
+}
+.header-container {
+    width: 100%;
+    background-color: #2c2c2c;
+    padding: 20px 0;
+    position: relative; /* To position the nav-button relative to this container */
+    top: 0; /* Position at the very top of the viewport */
+    left: 0;
+    z-index: 1000; /* Ensure it's above other page contents */
+}
+
+.nav-button {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 4px;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+.nav-button:hover {
+    background-color: #0056b3;
+}
+.results-button {
+    background-color: #007bff;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 4px;
+    text-decoration: none;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.results-button:hover {
+    background-color: #0056b3;
+}
+.select-wrapper {
+    position: relative;
+    margin-bottom: 15px;
+    width: 100%; /* Ensure wrapper takes full width */
+}
+
+.country-search {
+    width: 100%;
+    padding: 8px;
+    margin-bottom: 5px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box; /* Include padding in width calculation */
+}
+#playerCountry {
+    width: 100%;
+    min-width: 100%; /* Force minimum width */
+    box-sizing: border-box; /* Include padding in width calculation */
+}
+#playerCountry option {
+    min-width: 200px; /* Adjust this value as needed */
+}
+.country-search:focus {
+    outline: none;
+    border-color: #4CAF50;
+}

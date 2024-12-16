@@ -1,0 +1,232 @@
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #2c2c2c;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+h1 {
+    color: #ffffff;
+    text-align: center;
+    margin-top: 5px;
+}
+
+.page-container {
+    width: 100%;
+    max-width: 1200px; /* Maximum width for the entire container */
+    padding: 2px;
+    display: flex; /* Use flexbox for layout */
+    justify-content: center; /* Center items horizontally */
+    align-items: flex-start; /* Align items to the top */
+}
+
+.assignments-container, 
+.results-container {
+    background-color: #ffffff;
+    border-radius: 8px;
+    box-shadow: 0 0 0px rgba(0, 0, 0, 0.1);
+    padding: 10px 10px 10px 10px;
+    margin-bottom: 20px;
+    box-sizing: border-box; /* Include padding in width calculation */
+    
+    display: inline-block; /* Allow containers to shrink to fit content */
+    max-width: 400px; /* Set maximum width */
+    width: auto; /* Allow width to adjust based on content */
+}
+
+.assignments-container {
+    margin-right: 15px;
+    position: relative;  /* Ensure this is set */
+}
+
+#pointAssignmentForm {
+    width: 100%; /* Use full width of parent container */
+    padding-bottom: 10px; /* Add space for the button */
+}
+
+.results-container {
+    background-color: #2c2c2c;
+    position: relative; /* Add this to make it a positioning context for the button container */
+    padding-bottom: 60px; /* Add some padding at the bottom to make room for the button */
+}
+
+.point-input-container {
+    width: 100%; /* Use full width of form */
+}
+.point-input {
+    position: relative;
+    margin-bottom: 15px; /* Add some space between each input group */
+}
+
+.player-select {
+    width: 100%;
+    margin-bottom: 2px; /* Small gap between select and points label */
+}
+
+.point-input span {
+    margin-bottom: 2px; /* Add some space between the points and the drop-down */
+}
+.points-label {
+    display: block;
+    font-size: 0.8em;
+    color: #5f5f5f;
+    text-align: left;
+    padding-left: 5px; /* Align with the select element */
+}
+.results-table {
+    table-layout: auto; /* Change to auto to allow content-based sizing */
+    width: 100%; /* Ensure the table takes full width of its container */
+    border-collapse: separate;
+    border-spacing: 5px; /* Add some space between cells */
+}
+.results-table .rank-column {
+    width: 4%; /* Use minimal width */
+    white-space: nowrap; /* Prevent wrapping */
+}
+.results-table .player-column {
+    width: auto; /* Allow player column to take remaining space */
+}
+.results-table .points-column {
+    width: 5%; /* Use minimal width */
+    white-space: nowrap; /* Prevent wrapping */
+}
+.results-table th, 
+.results-table td {
+    background-color: rgb(185, 185, 185);
+    padding: 4px 8px;
+    border-radius: 30px;
+    text-align: center; /* Center all content in table cells */
+}
+.results-table .player-column {
+    text-align: left; /* Keep player names left-aligned */
+}
+.results-table tr {
+    margin-bottom: 10px;
+}
+.results-table th {
+    background-color: #2c2c2c;
+}
+@media (max-width: 768px) {
+   .page-container {
+       padding: 15px; 
+       flex-direction: column; /* Stack containers vertically on small screens */
+   }
+
+   .assignments-container,
+   .results-container {
+       max-width: none; /* Remove max-width on smaller screens for better responsiveness */
+       margin-right: 25px; /* Remove right margin on smaller screens */
+       position: relative; /* Add this line */
+   }
+}
+
+.reset-button-container {
+    position: fixed; /* Fixed positioning relative to the viewport */
+    bottom: 20px; /* Distance from the bottom of the viewport */
+    right: 20px; /* Distance from the right of the viewport */
+}
+
+#resetAllPointsButton {
+    background-color: #ff4d4d;
+    color: white;
+    border: none;
+    padding: 10px 10px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+}
+#resetAllPointsButton:hover {
+    background-color: #ff3333;
+}
+
+.reset-current-inputs-button:hover {
+    background-color: #ff3333;
+}
+.reset-current-inputs-button {
+    position: absolute;  /* Change 'left' to 'absolute' */
+    bottom: 20px;
+    right: 10px;  /* Increase this value by 20px (was 24px) */
+    background-color: #ff4d4d;
+    color: white;
+    border: none;  /* Change from '#2c2c2c' to 'none' for consistency */
+    padding: 5px 5px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 10px;
+}
+
+/* Reset button container styles */
+.reset-button-container {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    display: flex;
+    gap: 10px; /* Add space between buttons */
+    z-index: 1000; /* Ensure buttons stay on top */
+}
+
+/* Base button styles */
+.revert-button,
+.redo-button,
+#resetAllPointsButton {
+    padding: 8px 12px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 14px;
+    border: none;
+    color: white;
+    min-width: 80px; /* Ensure consistent minimum width */
+}
+
+/* Individual button colors */
+.revert-button {
+    background-color: #f0ad4e;
+}
+
+.revert-button:hover {
+    background-color: #ec971f;
+}
+
+.redo-button {
+    background-color: #5bc0de;
+}
+
+.redo-button:hover {
+    background-color: #46b8da;
+}
+
+#resetAllPointsButton {
+    background-color: #ff4d4d;
+}
+
+#resetAllPointsButton:hover {
+    background-color: #ff3333;
+}
+
+/* Disabled state */
+.revert-button:disabled,
+.redo-button:disabled {
+    background-color: #cccccc;
+    cursor: not-allowed;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+    .reset-button-container {
+        bottom: 10px;
+        right: 10px;
+        gap: 5px;
+    }
+
+    .revert-button,
+    .redo-button,
+    #resetAllPointsButton {
+        padding: 6px 10px;
+        font-size: 12px;
+        min-width: 60px;
+    }
+}

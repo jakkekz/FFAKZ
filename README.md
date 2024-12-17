@@ -5,5 +5,11 @@ Made 99.9% with AI (I dont know how to code) (might be a buggy mess)
 
 `Instructions: click green button called "<> Code", press "download zip", extract contents, open index.html`
 
-(pro tip: you can search for the country by typing the start of it and the closest one will be chosen for more apm)
-![image](https://github.com/user-attachments/assets/7b57e857-8b0e-4a37-a5c1-f9067fa88cb0)
+tips:
+
+you can search for the country by typing the start of it and the closest one will be chosen for more apm
+
+the drop down menus order is in the ranking order
+
+![image](https://github.com/user-attachments/assets/d27a1c2d-895c-42c6-ab22-f4896b90ee0b)
+

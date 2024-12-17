@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tournament Players</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/flag-icon-css/3.5.0/css/flag-icon.min.css">
+    <link rel="stylesheet" href="app.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap">
+</head>
+<body>
+    <div class="header-container">
+        <h1>Tournament Players</h1>
+        <a href="results.html" class="nav-button" onclick="window.location.href='results.html'; return false;">View Results</a>
+    </div>
+
+    <div class="page-content">
+        <div class="players-container">
+            <div class="form-container">
+                <form id="playerForm" onsubmit="addPlayer(event)">
+                    <label for="playerName">Player Name:</label>
+                    <input type="text" id="playerName" placeholder="Enter player name" required>
+
+                    <label for="playerCountry">Country:</label>
+                    <select id="playerCountry" required>
+                        <option value="" disabled selected>Select Country</option>
+                    </select>
+
+                    <button type="submit">Add Player</button>
+                </form>
+            </div>
+
+            <div class="player-list" id="playerList">
+                <h2>Player List</h2>
+            </div>
+        </div>
+    </div>
+
+    <script src="app.js"></script>
+</body>
+</html>

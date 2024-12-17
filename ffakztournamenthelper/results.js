@@ -19,10 +19,22 @@ function getOrdinalSuffix(i) {
     return "th";
 }
 
+// Get ranked players list
+function getRankedPlayers() {
+    const savedPlayers = JSON.parse(localStorage.getItem('playerList')) || [];
+    const playerPoints = JSON.parse(localStorage.getItem('playerPoints')) || {};
+
+    return savedPlayers.map(player => ({
+        ...player,
+        points: playerPoints[player.name] || 0,
+    }))
+    .sort((a, b) => b.points - a.points);
+}
+
 // Generate position inputs
 function generatePositionInputs() {
-    const savedPlayers = JSON.parse(localStorage.getItem('playerList')) || [];
-    const totalPlayers = savedPlayers.length;
+    const rankedPlayers = getRankedPlayers();
+    const totalPlayers = rankedPlayers.length;
     const container = document.getElementById('pointAssignmentForm');
     
     container.innerHTML = '';
@@ -46,7 +58,7 @@ function generatePositionInputs() {
         defaultOption.textContent = `Select ${i}${getOrdinalSuffix(i)} Place`;
         select.appendChild(defaultOption);
         
-        savedPlayers.forEach(player => {
+        rankedPlayers.forEach(player => {
             const option = document.createElement('option');
             option.value = player.name;
             option.textContent = player.name;
@@ -84,7 +96,7 @@ function generatePositionInputs() {
 }
 
 function updateAvailablePlayers() {
-    const savedPlayers = JSON.parse(localStorage.getItem('playerList')) || [];
+    const rankedPlayers = getRankedPlayers();
     const selects = document.querySelectorAll('.player-select');
     const selectedPlayers = new Set();
     
@@ -101,7 +113,7 @@ function updateAvailablePlayers() {
             select.remove(1);
         }
 
-        savedPlayers.forEach(player => {
+        rankedPlayers.forEach(player => {
             if (!selectedPlayers.has(player.name) || player.name === currentSelection) {
                 const newOption = document.createElement('option');
                 newOption.value = player.name;
@@ -117,13 +129,13 @@ function updateAvailablePlayers() {
 }
 
 function resetInputs() {
-    const savedPlayers = JSON.parse(localStorage.getItem('playerList')) || [];
+    const rankedPlayers = getRankedPlayers();
     const selects = document.querySelectorAll('.player-select');
 
     selects.forEach(select => {
         select.value = "";
 
-        savedPlayers.forEach(player => {
+        rankedPlayers.forEach(player => {
             let optionExists = Array.from(select.options).some(option => option.value === player.name);
             if (!optionExists) {
                 const newOption = document.createElement('option');
@@ -166,8 +178,8 @@ function saveState() {
 }
 
 function assignPoints() {
-    const savedPlayers = JSON.parse(localStorage.getItem('playerList')) || [];
-    const totalPlayers = savedPlayers.length;
+    const rankedPlayers = getRankedPlayers();
+    const totalPlayers = rankedPlayers.length;
     let raceResults = JSON.parse(localStorage.getItem('raceResults')) || [];
     
     saveState();
@@ -186,18 +198,18 @@ function assignPoints() {
         });
         localStorage.setItem('raceResults', JSON.stringify(raceResults));
         
-        resetInputs();
         recalculateAllPoints();
+        generatePositionInputs(); // Regenerate dropdowns with updated order
     }
 }
 
 function recalculateAllPoints() {
-    const savedPlayers = JSON.parse(localStorage.getItem('playerList')) || [];
-    const totalPlayers = savedPlayers.length;
+    const rankedPlayers = getRankedPlayers();
+    const totalPlayers = rankedPlayers.length;
     const raceResults = JSON.parse(localStorage.getItem('raceResults')) || [];
     const playerPoints = {};
  
-    savedPlayers.forEach(player => {
+    rankedPlayers.forEach(player => {
         playerPoints[player.name] = 0;
     });
  
@@ -212,33 +224,6 @@ function recalculateAllPoints() {
  
     localStorage.setItem('playerPoints', JSON.stringify(playerPoints));
     displayResults();
-}
-
-function displayResults() {
-    const resultsBody = document.getElementById('resultsBody');
-    const savedPlayers = JSON.parse(localStorage.getItem('playerList')) || [];
-    const playerPoints = JSON.parse(localStorage.getItem('playerPoints')) || {};
-
-    resultsBody.innerHTML = '';
-
-    const rankedPlayers = savedPlayers.map(player => ({
-        ...player,
-        points: playerPoints[player.name] || 0,
-    }))
-    .sort((a, b) => b.points - a.points);
-
-    rankedPlayers.forEach((player, index) => {
-        const row = document.createElement('tr');
-        row.innerHTML = `
-            <td class="rank-column">${index + 1}</td>
-            <td class="player-column">
-                <span class="flag-icon flag-icon-${player.countryCode.toLowerCase()}"></span>
-                ${player.name}
-            </td>
-            <td class="points-column">${player.points}</td>
-        `;
-        resultsBody.appendChild(row);
-    });
 }
 
 function revertLastAction() {
@@ -287,9 +272,9 @@ function resetAllPoints() {
         
         localStorage.setItem('raceResults', JSON.stringify([]));
         
-        const savedPlayers = JSON.parse(localStorage.getItem('playerList')) || [];
+        const rankedPlayers = getRankedPlayers();
         const playerPoints = {};
-        savedPlayers.forEach(player => {
+        rankedPlayers.forEach(player => {
             playerPoints[player.name] = 0;
         });
         localStorage.setItem('playerPoints', JSON.stringify(playerPoints));
@@ -297,6 +282,31 @@ function resetAllPoints() {
         recalculateAllPoints();
         generatePositionInputs();
     }
+}
+
+function displayResults() {
+    const resultsBody = document.getElementById('resultsBody');
+    const roundCountElement = document.getElementById('roundCount');
+    const rankedPlayers = getRankedPlayers();
+    const raceResults = JSON.parse(localStorage.getItem('raceResults')) || [];
+
+    // Update round counter
+    roundCountElement.textContent = raceResults.length;
+
+    resultsBody.innerHTML = '';
+
+    rankedPlayers.forEach((player, index) => {
+        const row = document.createElement('tr');
+        row.innerHTML = `
+            <td class="rank-column">${index + 1}</td>
+            <td class="player-column">
+                <span class="flag-icon flag-icon-${player.countryCode.toLowerCase()}"></span>
+                ${player.name}
+            </td>
+            <td class="points-column">${player.points}</td>
+        `;
+        resultsBody.appendChild(row);
+    });
 }
 
 document.addEventListener('DOMContentLoaded', () => {

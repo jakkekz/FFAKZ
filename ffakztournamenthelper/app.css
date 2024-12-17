@@ -1,191 +1,231 @@
+/* Modern color palette and variables */
+:root {
+    --primary: #2563eb;
+    --primary-dark: #1d4ed8;
+    --secondary: #64748b;
+    --background: #0f172a;
+    --surface: #1e293b;
+    --surface-light: #334155;
+    --text: #f8fafc;
+    --text-secondary: #94a3b8;
+    --success: #22c55e;
+    --warning: #eab308;
+    --error: #ef4444;
+    --radius: 8px;
+    --shadow: 0 2px 4px -1px rgb(0 0 0 / 0.1), 0 1px 2px -1px rgb(0 0 0 / 0.1);
+}
+
+/* Base styles */
 body {
-    font-family: Arial, sans-serif;
+    font-family: 'Inter', system-ui, -apple-system, sans-serif;
     margin: 0;
-    padding: 0; /* Remove padding from body */
-    background-color: #2c2c2c;
-    min-height: 100vh; /* Use min-height to ensure full screen height */
+    padding: 0;
+    background-color: var(--background);
+    min-height: 100vh;
     display: flex;
     flex-direction: column;
-    align-items: center; /* Center items horizontally */
+    align-items: center;
+    color: var(--text);
+    font-size: 18.4px;
 }
-h1 {
-    color: rgb(255, 255, 255);
+
+.header-container {
+    width: 100%;
+    padding: 1.32rem 0;
+    background-color: var(--surface);
+    margin-bottom: 2rem;
+    box-shadow: var(--shadow);
+    position: relative;
+  }
+
+  .header-container h1 {
+    color: var(--text);
     text-align: center;
-    margin-top: 5px; /* Add some space from the top */
+    margin: 0;
+    font-size: 2rem;
+    font-weight: 700;
+  }
+
+  .header-container h2 {
+    font-size: 1.32rem;
+    margin: 0 0 0.66rem 0;
+    color: var(--text);
+  }
+  
+.nav-button {
+  position: absolute;
+  top: 1.32rem;
+  right: 1.32rem;
+  padding: 0.53rem 1.06rem;
+  background-color: var(--primary);
+  color: var(--text);
+  text-decoration: none;
+  border-radius: var(--radius);
+  font-weight: 500;
+  font-size: 1.15rem;
+  transition: background-color 0.2s;
 }
+.nav-button:hover {
+    background-color: var(--primary-dark);
+}
+
+/* Rest of the existing styles... */
 .page-content {
-    margin-top: 5px; /* Add margin to push content below the fixed header */
+    width: 100%;
+    max-width: 1190px;
+    padding: 0 1.32rem;
 }
-.center-container {
-    display: flex;
-    justify-content: center; /* Center horizontally */
-    position: absolute; /* Position absolutely within the header container */
-    top: 20px; /* Adjust this value to position vertically from the top */
-    left: 50%; /* Center horizontally */
-    transform: translateX(-50%); /* Correct centering by moving left by half its width */
-}
-/* Ensure the rest of your styles remain unchanged */
-.players-container {
-    max-width: 800px;
-    margin: 0 auto;
-    padding: 20px;
-}
+
+/* Form container styles */
 .form-container {
-    max-width: 500px;
-    min-width: 500px; /* Add this to prevent shrinking */
-    margin: 0 auto 40px auto; 
-    background-color: #fff;
-    padding: 20px;
-    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
-    border-radius: 8px;
-    box-sizing: border-box; /* Add this */
+    background-color: var(--surface);
+    border-radius: var(--radius);
+    box-shadow: var(--shadow);
+    padding: 1.32rem;
+    margin-bottom: 2rem;
+    width: 100%;
+    max-width: 600px;
+    margin-left: auto;
+    margin-right: auto;
+    box-sizing: border-box;
 }
 
 .form-container label {
     display: block;
-    margin-bottom: 5px;
-    font-weight: bold;
+    margin-bottom: 0.66rem;
+    color: var(--text-secondary);
+    font-size: 1.15rem;
 }
 
-.form-container input, .form-container select {
+.form-container input,
+.form-container select,
+.country-search {
     width: 100%;
-    padding: 8px;
-    margin-bottom: 15px;
-    border: 1px solid #ccc;
-    border-radius: 4px;
+    padding: 0.66rem;
+    margin-bottom: 1.32rem;
+    border: 1px solid var(--surface-light);
+    border-radius: var(--radius);
+    background-color: var(--surface-light);
+    color: var(--text);
+    font-size: 1.15rem;
+    box-sizing: border-box;
+}
+
+.select-wrapper {
+    width: 100%;
+    box-sizing: border-box;
+}
+
+.form-container input:focus,
+.form-container select:focus {
+    outline: none;
+    border-color: var(--primary);
 }
 
 .form-container button {
-    background-color: #4CAF50;
-    color: white;
+    background-color: var(--success);
+    color: var(--text);
     border: none;
-    padding: 10px 20px;
-    border-radius: 4px;
+    padding: 0.66rem 1.32rem;
+    border-radius: var(--radius);
     cursor: pointer;
+    font-weight: 500;
     width: 100%;
+    font-size: 1.15rem;
+    transition: opacity 0.2s;
 }
 
 .form-container button:hover {
-    background-color: #45a049;
+    opacity: 0.9;
 }
 
+/* Player list styles */
 .player-list {
-    margin-top: 30px;
-    background-color: #fff;
-    padding: 20px;
-    border-radius: 8px;
-    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    background-color: var(--surface);
+    padding: 1.32rem;
+    border-radius: var(--radius);
+    box-shadow: var(--shadow);
+    width: 100%;
+    max-width: 600px;
+    margin: 0 auto;
+    box-sizing: border-box;
 }
 
 .player-item {
-    padding: 8px;
-    background-color: #fff;
-    border: 1px solid #ddd;
-    margin: 5px 0;
-    border-radius: 4px;
+    padding: 0.66rem;
+    background-color: var(--surface-light);
+    margin: 0.66rem 0;
+    border-radius: var(--radius);
     display: flex;
     align-items: center;
-    gap: 10px;
+    gap: 0.66rem;
+    font-size: 1.15rem;
 }
 
 .flag-icon {
-    margin-right: 10px;
+    margin-right: 0.46rem;
+    font-size: 1.15rem;
 }
 
-/* New delete button styles */
+/* Delete button styles */
 .delete-player {
-    background-color: red;
-    color: white;
+    background-color: var(--error);
+    color: var(--text);
     border: none;
-    font-size: 0.7rem;
-    padding: 2px 5px;
-    border-radius: 3px;
-    margin-left: 10px;
+    font-size: 0.99rem;
+    padding: 0.33rem 0.66rem;
+    border-radius: var(--radius);
+    margin-left: auto;
     cursor: pointer;
-}
-.nav-button {
-    position: absolute; /* Position it relative to the nearest positioned ancestor */
-    top: 20px; /* Adjust as needed */
-    right: 20px; /* Adjust as needed */
-    background-color: #007bff; /* Button color */
-    color: white; /* Text color */
-    border: none;
-    padding: 10px 20px;
-    border-radius: 4px;
-    text-decoration: none; /* Remove underline from link */
-    font-weight: bold;
+    transition: opacity 0.2s;
 }
 
-.nav-button:hover {
-    background-color: #0056b3; /* Darker shade on hover */
-}
 .delete-player:hover {
-    background-color: darkred;
-}
-.header-container {
-    width: 100%;
-    background-color: #2c2c2c;
-    padding: 20px 0;
-    position: relative; /* To position the nav-button relative to this container */
-    top: 0; /* Position at the very top of the viewport */
-    left: 0;
-    z-index: 1000; /* Ensure it's above other page contents */
+    opacity: 0.9;
 }
 
-.nav-button {
-    position: absolute;
-    top: 20px;
-    right: 20px;
-    background-color: #007bff;
-    color: white;
-    border: none;
-    padding: 10px 20px;
-    border-radius: 4px;
-    text-decoration: none;
-    font-weight: bold;
-}
-
-.nav-button:hover {
-    background-color: #0056b3;
-}
-.results-button {
-    background-color: #007bff;
-    color: white;
-    border: none;
-    padding: 10px 20px;
-    border-radius: 4px;
-    text-decoration: none;
-    font-weight: bold;
-    cursor: pointer;
-    transition: background-color 0.3s ease;
-}
-
-.results-button:hover {
-    background-color: #0056b3;
-}
-.select-wrapper {
-    position: relative;
-    margin-bottom: 15px;
-    width: 100%; /* Ensure wrapper takes full width */
-}
-
+/* Country select styles */
 .country-search {
     width: 100%;
-    padding: 8px;
-    margin-bottom: 5px;
-    border: 1px solid #ccc;
-    border-radius: 4px;
-    box-sizing: border-box; /* Include padding in width calculation */
+    padding: 0.66rem;
+    margin-bottom: 0.66rem;
+    border: 1px solid var(--surface-light);
+    border-radius: var(--radius);
+    background-color: var(--surface-light);
+    color: var(--text);
+    font-size: 1.15rem;
 }
-#playerCountry {
-    width: 100%;
-    min-width: 100%; /* Force minimum width */
-    box-sizing: border-box; /* Include padding in width calculation */
-}
-#playerCountry option {
-    min-width: 200px; /* Adjust this value as needed */
-}
-.country-search:focus {
-    outline: none;
-    border-color: #4CAF50;
+
+/* Responsive design */
+@media (max-width: 768px) {
+    .page-content {
+        padding: 0 0.66rem;
+    }
+
+    .form-container,
+    .player-list {
+        width: 100%;
+        margin: 0 0 2rem 0;
+        padding: 1rem;
+    }
+
+    .header-container {
+        padding: 1.32rem 0;
+    }
+
+    h1 {
+        font-size: 1.66rem;
+        margin-bottom: 0.66rem;
+    }
+
+    .nav-button {
+        top: 1.32rem;
+        right: 1.32rem;
+        padding: 0.53rem 1.06rem;
+        font-size: 1.07rem;
+    }
+
+    .page-content {
+        padding: 0 1rem;
+    }
 }

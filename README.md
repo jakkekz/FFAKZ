@@ -7,7 +7,7 @@ Made 99.9% with AI (I dont know how to code) (might be a buggy mess)
 
 tips:
 
-you can search for the country by typing the start of it and the closest one will be chosen for more apm
+you can search for the country by typing the start of it and the closest one after hitting enter will be chosen for more apm
 
 the drop down menus order is in the ranking order
 

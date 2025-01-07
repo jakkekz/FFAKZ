@@ -4,7 +4,7 @@ Made 99.9% with AI (I dont know how to code) (might be a buggy mess)
 2 pages, first one to add players with their countries and second to take care of the points :)
 
 Instructions: 
-1.  download the latest release
+1.  download the latest release ![ ](https://i.imgur.com/bfQ7lu0.png)
 2.  extract contents
 3.  open index.html
 

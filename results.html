@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+    <script>
+        // Set initial background color based on stored theme
+        const storedBackground = localStorage.getItem('currentThemeBackground') || '#0f172a';
+        document.documentElement.style.backgroundColor = storedBackground;
+    </script>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tournament Results</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/flag-icon-css/3.5.0/css/flag-icon.min.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@600&display=swap">
+    <link rel="stylesheet" href="results.css">
+    <link rel="stylesheet" href="settings.css">
+</head>
+<body>
+    <div class="header-container">
+        <h1>Tournament Results</h1>
+        <a href="index.html" class="nav-button">View Players</a>
+    </div>
+
+    <div class="page-container">
+        <div class="assignments-container">
+            <h2>Enter Round Results</h2>
+            <form id="pointAssignmentForm">
+                <!-- Dynamic inputs will be generated here -->
+            </form>
+        </div>
+
+        <div class="results-container">
+            <h2>Standings</h2>
+            <div class="round-counter">Round: <span id="roundCount">0</span></div>
+            <table class="results-table">
+                <thead>
+                    <tr>
+                        <th class="rank-column">#</th>
+                        <th>Player</th>
+                        <th class="points-column">Points</th>
+                    </tr>
+                </thead>
+                <tbody id="resultsBody">
+                    <!-- Results will be dynamically populated here -->
+                </tbody>
+            </table>
+            <div class="standings-buttons">
+                <button id="revertButton" class="revert-button" type="button">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon">
+                        <path d="M3 7v6h6"/>
+                        <path d="M21 17a9 9 0 00-9-9 9 9 0 00-6 2.3L3 13"/>
+                    </svg>
+                    Undo
+                </button>
+                <button id="redoButton" class="redo-button" type="button">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon">
+                        <path d="M21 7v6h-6"/>
+                        <path d="M3 17a9 9 0 019-9 9 9 0 016 2.3L21 13"/>
+                    </svg>
+                    Redo
+                </button>
+                <button id="resetAllPointsButton" type="button">Reset All</button>
+            </div>
+        </div>
+    </div>
+
+    <script src="results.js"></script>
+    <script src="settings.js"></script>
+</body>
+</html>

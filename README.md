@@ -16,3 +16,5 @@ tips:
 
 ![themes](https://i.imgur.com/eWTE6WF.png)
 
+fix: 
+- if only one player is given points for a round it doesnt give the correct points.

@@ -17,5 +17,4 @@ tips:
 - the drop down menus order on point page is in the current standing order.
 - settings menu can be accessed in the bottom left corner (themes and style)
 
-![](https://i.imgur.com/eWTE6WF.png | width=500)
-![](https://gyazo.com/eb5c5741b6a9a16c692170a41a49c858.png | width=100)
+<img src="https://i.imgur.com/lpBqx1x.png" width="200">

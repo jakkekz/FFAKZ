@@ -4,8 +4,6 @@
 
 Shoutout Claude 3.5 Sonnet😎 (I dont know how to code) (might be a buggy mess).
 
-2 pages, first one to add players with their countries and second to take care of the points.
-
 Instructions: 
 1.  download the [latest release](https://github.com/jakkekz/FFAKZ/releases/latest)
 2.  extract contents

@@ -1,6 +1,6 @@
 ***!⚠️!⚠️!⚠️WORKS ON CHROMIUM BROWSERS (FIREFOX DOESNT)⚠️!⚠️!⚠️!***
 
-# FFA KZ Tournament helper
+# KZ Tournament Manager
 
 Shoutout Claude 3.5 Sonnet😎 (I dont know how to code) (might be a buggy mess).
 

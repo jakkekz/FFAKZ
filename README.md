@@ -10,4 +10,4 @@ Instructions:
 3. open main.html
 4. enjoy
 
-- settings menu can be accessed in the bottom left corner (themes and style)
+settings menu can be accessed in the bottom left corner (themes and style)

@@ -1,4 +1,4 @@
-***!⚠️!⚠️!⚠️WORKS ON CHROMIUM BROWSERS (FIREFOX DOESNT)⚠️!⚠️!⚠️!***
+***!⚠️!⚠️!⚠️FFA WORKS ONLY ON CHROMIUM BROWSERS⚠️!⚠️!⚠️!***
 
 # KZ Tournament Manager
 - For managing:

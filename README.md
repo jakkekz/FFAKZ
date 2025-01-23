@@ -11,4 +11,7 @@ Instructions:
 3. open main.html
 4. enjoy
 
-Shoutout Claude 3.5 Sonnet😎 (I dont know how to code) (might be a buggy mess).
+<img src="https://github.com/user-attachments/assets/ce24eb3d-cef4-4e64-b48a-a3a8840b9b11" data-canonical-src="https://github.com/user-attachments/assets/4f973edd-a91b-4fc0-9311-815cd15011a7" width="417" height="280" />
+<img src="https://github.com/user-attachments/assets/4f973edd-a91b-4fc0-9311-815cd15011a7" data-canonical-src="https://github.com/user-attachments/assets/4f973edd-a91b-4fc0-9311-815cd15011a7" width="417" height="280" />
+
+Shoutout Claude 3.5 Sonnet😎 (a bunch of AI generated code thrown into a few piles)

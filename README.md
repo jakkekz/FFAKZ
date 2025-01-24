@@ -15,8 +15,8 @@ This is not perfect so I'd recommend experimenting before the tournament 😊
 
 <table border="0">
   <tr>
-    <td><img src="https://github.com/user-attachments/assets/ce24eb3d-cef4-4e64-b48a-a3a8840b9b11" data-canonical-src="https://github.com/user-attachments/assets/4f973edd-a91b-4fc0-9311-815cd15011a7" width="417" height="280" /></td>
-    <td><img src="https://github.com/user-attachments/assets/4f973edd-a91b-4fc0-9311-815cd15011a7" data-canonical-src="https://github.com/user-attachments/assets/4f973edd-a91b-4fc0-9311-815cd15011a7" width="417" height="280" /></td>
+    <td><img src="https://github.com/user-attachments/assets/ce24eb3d-cef4-4e64-b48a-a3a8840b9b11" data-canonical-src="https://github.com/user-attachments/assets/4f973edd-a91b-4fc0-9311-815cd15011a7" width="375" /></td>
+    <td><img src="https://github.com/user-attachments/assets/4f973edd-a91b-4fc0-9311-815cd15011a7" data-canonical-src="https://github.com/user-attachments/assets/4f973edd-a91b-4fc0-9311-815cd15011a7" width="375" /></td>
   </tr>
 </table>
 

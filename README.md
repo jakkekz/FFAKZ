@@ -13,10 +13,10 @@ Instructions:
 
 This is not perfect so I'd recommend experimenting before the tournament 😊
 
-<table style="border-collapse: collapse;">
+<table border="0">
   <tr>
-    <td style="border: none; padding: 0;"><img src="https://github.com/user-attachments/assets/ce24eb3d-cef4-4e64-b48a-a3a8840b9b11" data-canonical-src="https://github.com/user-attachments/assets/4f973edd-a91b-4fc0-9311-815cd15011a7" width="417" height="280" /></td>
-    <td style="border: none; padding: 0;"><img src="https://github.com/user-attachments/assets/4f973edd-a91b-4fc0-9311-815cd15011a7" data-canonical-src="https://github.com/user-attachments/assets/4f973edd-a91b-4fc0-9311-815cd15011a7" width="417" height="280" /></td>
+    <td><img src="https://github.com/user-attachments/assets/ce24eb3d-cef4-4e64-b48a-a3a8840b9b11" data-canonical-src="https://github.com/user-attachments/assets/4f973edd-a91b-4fc0-9311-815cd15011a7" width="417" height="280" /></td>
+    <td><img src="https://github.com/user-attachments/assets/4f973edd-a91b-4fc0-9311-815cd15011a7" data-canonical-src="https://github.com/user-attachments/assets/4f973edd-a91b-4fc0-9311-815cd15011a7" width="417" height="280" /></td>
   </tr>
 </table>
 

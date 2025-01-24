@@ -13,11 +13,8 @@ Instructions:
 
 This is not perfect so I'd recommend experimenting before the tournament 😊
 
-<table border="0">
   <tr>
-    <td><img src="https://github.com/user-attachments/assets/544e2e91-dd67-4908-b3a8-e57494fbde75" data-canonical-src="https://github.com/user-attachments/assets/544e2e91-dd67-4908-b3a8-e57494fbde75" width="375" /></td>
-    <td><img src="https://github.com/user-attachments/assets/8e1aaf45-1075-4e50-a268-e8f28c8ae911" data-canonical-src="https://github.com/user-attachments/assets/8e1aaf45-1075-4e50-a268-e8f28c8ae911" width="375" /></td>
+    <td><img src="https://github.com/user-attachments/assets/0280d2e8-f5c8-46ea-9eb2-77affcd4473d" data-canonical-src="https://github.com/user-attachments/assets/0280d2e8-f5c8-46ea-9eb2-77affcd4473d" width="750" /></td>
   </tr>
-</table>
 
 Shoutout Claude 3.5 Sonnet😎 (a bunch of AI generated code thrown into a few piles)

@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="en">
+  <script>
+    // Set initial background color based on stored theme
+    const storedBackground =
+      localStorage.getItem("currentThemeBackground") || "#0f172a";
+    document.documentElement.style.backgroundColor = storedBackground;
+  </script>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>KZ Tournament Manager</title>
+    <link rel="icon" type="image/x-icon" href="../jimiface.ico" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/flag-icon-css/3.5.0/css/flag-icon.min.css"
+    />
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap"
+    />
+    <link rel="stylesheet" href="app.css" />
+    <link rel="stylesheet" href="settings.css" />
+  </head>
+  <body>
+    <div class="header-container">
+      <h1>Tournament Players</h1>
+      <a href="../main.html" class="nav-button" style="left: 1rem; width: fit-content;">Home</a>
+      <a href="results.html" class="nav-button">View Results</a>
+    </div>
+
+    <div class="page-content">
+      <div class="form-container">
+        <form id="playerForm" onsubmit="addPlayer(event)">
+          <label for="playerName">Player Name:</label>
+          <input
+            type="text"
+            id="playerName"
+            placeholder="Enter player name..."
+            required
+          />
+
+          <label for="playerCountry">Country:</label>
+          <select id="playerCountry" required>
+            <option value="" disabled selected>Select Country</option>
+          </select>
+        </form>
+
+        <div class="how-to-section">
+          <h4>How to Use</h4>
+          <ul>
+            <li>
+              Enter a player's name in the "Enter player name..." field.
+            </li>
+            <li>
+              Press <em>tab</em> or click
+              <em
+                >"Type to search countries..."</em
+              >
+              manually.
+            </li>
+            <li>
+              Select the player's country by typing in the field and selecting
+              it from the dropdown menu <strong>OR</strong> faster, by pressing
+              <em>enter</em>.
+            </li>
+            <li>
+              The player will be added to the list after chosing the country.
+              Repeat for all players.
+            </li>
+            <li>
+              Use the
+              <svg
+                viewBox="0 0 24 24"
+                fill="none"
+                style="
+                  width: 16px;
+                  height: 16px;
+                  vertical-align: middle;
+                  background-color: var(--error);
+                  padding: 6px;
+                  border-radius: 4px;
+                "
+              >
+                <path
+                  d="M3 6H5H21"
+                  stroke="white"
+                  stroke-width="2"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                />
+                <path
+                  d="M19 6V20C19 20.5304 18.7893 21.0391 18.4142 21.4142C18.0391 21.7893 17.5304 22 17 22H7C6.46957 22 5.96086 21.7893 5.58579 21.4142C5.21071 21.0391 5 20.5304 5 20V6M8 6V4C8 3.46957 8.21071 2.96086 8.58579 2.58579C8.96086 2.21071 9.46957 2 10 2H14C14.5304 2 15.0391 2.21071 15.4142 2.58579C15.7893 2.96086 16 3.46957 16 4V6"
+                  stroke="white"
+                  stroke-width="2"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                />
+                <path
+                  d="M10 11V17"
+                  stroke="white"
+                  stroke-width="2"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                />
+                <path
+                  d="M14 11V17"
+                  stroke="white"
+                  stroke-width="2"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                />
+              </svg>
+              button to remove a player from the list.
+            </li>
+            <dl>
+              <li>
+                <dt><u>Settings menu</u></dt>
+                <dd>- Themes</dd>
+                <dd>- Styles</dd>
+                <dd>- Nothing else so far...</dd>
+              </li>
+            </dl>
+          </ul>
+        </div>
+      </div>
+
+      <div class="player-list" id="playerList">
+        <h2>Players: <span id="playerCount" class="player-count">0</span></h2>
+      </div>
+    </div>
+    <div class="settings-overlay" id="settingsOverlay">
+      <div class="settings-menu" id="settingsMenu">
+        <div class="settings-content">
+          <h2>Settings</h2>
+          <div class="settings-section">
+            <h3>Theme</h3>
+            <div class="settings-option">
+              <label for="theme">Theme</label>
+              <select id="theme">
+                <option value="dark-blue">Dark Blue (default)</option>
+                <option value="dark">Dark</option>
+                <option value="light">Light (warning)</option>
+                <option value="pink-purple">Femboy</option>
+              </select>
+            </div>
+          </div>
+
+          <div class="settings-footer">
+            <img
+              src="https://i.imgur.com/WQ6gZrp.png"
+              alt="PurpSsaka"
+              width="150"
+              height="150"
+              style="border-radius: 50%"
+            />
+          </div>
+        </div>
+        <button class="settings-button" id="settingsButton">
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            width="24"
+            height="24"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="#ffffff"
+            stroke-width="2"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+          >
+            <path
+              d="M12.22 2h-.44a2 2 0 0 0-2 2v.18a2 2 0 0 1-1 1.73l-.43.25a2 2 0 0 1-2 0l-.15-.08a2 2 0 0 0-2.73.73l-.22.38a2 2 0 0 0 .73 2.73l.15.1a2 2 0 0 1 1 1.72v.51a2 2 0 0 1-1 1.74l-.15.09a2 2 0 0 0-.73 2.73l.22.38a2 2 0 0 0 2.73.73l.15-.08a2 2 0 0 1 2 0l.43.25a2 2 0 0 1 1 1.73V20a2 2 0 0 0 2 2h.44a2 2 0 0 0 2-2v-.18a2 2 0 0 1 1-1.73l.43-.25a2 2 0 0 1 2 0l.15.08a2 2 0 0 0 2.73-.73l.22-.39a2 2 0 0 0-.73-2.73l-.15-.08a2 2 0 0 1-1-1.74v-.5a2 2 0 0 1 1-1.74l.15-.09a2 2 0 0 0 .73-2.73l-.22-.38a2 2 0 0 0-2.73-.73l-.15.08a2 2 0 0 1-2 0l-.43-.25a2 2 0 0 1-1-1.73V4a2 2 0 0 0-2-2z"
+            />
+            <circle cx="12" cy="12" r="3" />
+          </svg>
+        </button>
+      </div>
+    </div>
+
+    <script src="app.js"></script>
+    <script src="settings.js"></script>
+  </body>
+</html>

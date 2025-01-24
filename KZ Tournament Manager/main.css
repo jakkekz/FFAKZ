@@ -1,0 +1,141 @@
+:root {
+    --primary: #2563eb;
+    --background: #0f172a;
+    --surface: #1e293b;
+    --text: #f8fafc;
+    --radius: 3px;
+    --shadow: 0 2px 4px -1px rgb(0 0 0 / 0.1);
+    --transition-duration: 0.3s; /* Added transition duration */
+    --gradient: linear-gradient(142deg, rgba(15,23,42,1) 0%, rgba(15,25,50,1) 61%, rgba(15,27,56,1) 100%);
+}
+  
+  
+  body {
+    font-family: system-ui, -apple-system, sans-serif;
+    margin: 0;
+    background-color: var(--background);
+    color: var(--text);
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-image: var(--gradient);
+    animation: bg-animation 1s infinite alternate;
+    background-size: 300%;
+  }
+
+  @keyframes bg-animation {
+    0% {
+      background-position: 0% 50%;
+    }
+    100% {
+      background-position: 100% 50%;
+    }
+  }
+  
+  .header-container {
+    width: 100%;
+    padding: 1rem 0;
+    background-color: var(--surface);
+    margin-bottom: 2rem;
+    box-shadow: var(--shadow);
+    text-align: center;
+  }
+  
+  .format-selection {
+    display: flex;
+    gap: 2rem;
+    padding: 2rem;
+  }
+  
+  .format-button {
+    background-color: var(--surface);
+    padding: 2rem;
+    border-radius: var(--radius);
+    text-decoration: none;
+    color: var(--text);
+    width: 300px;
+    text-align: center;
+    transition: transform 0.2s;
+  }
+  
+  .format-button:hover {
+    transform: scale(1.05);
+  }
+  
+  .hover-area {
+    color: var(--text);
+    text-decoration: none;
+    color: rgb(209, 108, 40);
+    cursor: pointer;
+  }
+  
+  /* Style for the overlay */
+  .overlay {
+    display: flex; /* Changed to flex for smooth transition */
+    position: fixed;
+    top: 400px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 100%;
+    height: auto;
+    z-index: 100;
+    justify-content: center;
+    align-items: flex-start;
+    opacity: 0; /* Initially hidden */
+    visibility: hidden; /* Initially hidden */
+    transition: opacity var(--transition-duration), visibility var(--transition-duration);
+  }
+  
+  .overlay.active {
+    opacity: 1;
+    visibility: visible;
+  }
+  
+  /* Style for the popup image */
+  .overlay img {
+    max-width: 45%;
+    max-height: 45%;
+  }
+  
+  .format-selection {
+    display: flex;
+    gap: 2rem;
+    padding: 2rem;
+    justify-content: center; /* Center the buttons */
+  }
+  
+  /* Styles for the popup */
+  #popup {
+    position: fixed;
+    top: 20px;
+    left: 20px;
+    background: var(--surface);
+    opacity: 0; /* Initially hidden */
+    visibility: hidden; /* Initially hidden */
+    padding: 0.5rem;
+    border-radius: var(--radius);
+    display: flex;
+    gap: 10px;
+    z-index: 101;
+    transition: opacity var(--transition-duration), visibility var(--transition-duration);
+  }
+  
+  #popup.active {
+    opacity: 0.9;
+    visibility: visible;
+  }
+  
+  #popup a {
+    transition: opacity var(--transition-duration);
+    opacity: 0.5;
+  }
+  
+  #popup a.active {
+    opacity: 1;
+    pointer-events: auto;
+  }
+  
+  #popup a:not(.active) {
+      pointer-events: none;
+  }

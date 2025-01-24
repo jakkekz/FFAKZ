@@ -1,0 +1,942 @@
+/* Modern color palette and variables */
+:root {
+    /* Common variables */
+    --radius: 3px;
+    --shadow: 0 2px 4px -1px rgb(0 0 0 / 0.1), 0 1px 2px -1px rgb(0 0 0 / 0.1);
+  }
+  
+  /* Dark Blue Theme (Default) */
+  [data-theme="dark-blue"] {
+    --primary: #2563eb;
+    --primary-dark: #1d4ed8;
+    --secondary: #64748b;
+    --background: #0f172a;
+    --surface: #1e293b;
+    --surface-light: #334155;
+    --text: #f8fafc;
+    --text-secondary: #94a3b8;
+    --success: #22c55e;
+    --warning: #eab308;
+    --error: #ef4444;
+  }
+  /* Pink/Purple Theme */
+  [data-theme="pink-purple"] {
+    --primary: #743d68;
+    --primary-dark: #4e2445;
+    --secondary: #ffffff;
+    --background: #dd85c3;
+    --surface: #b3649b;
+    --surface-light: #8a4e78;
+    --text: #fce7f3;
+    --text-secondary: #fbcfe8;
+    --success: #743d68;
+    --warning: #743d68;
+    --error: #743d68;
+  }
+  /* Dark Theme */
+  [data-theme="dark"] {
+    --primary: #6366f1;
+    --primary-dark: #4f46e5;
+    --secondary: #71717a;
+    --background: #18181b;
+    --surface: #27272a;
+    --surface-light: #3f3f46;
+    --text: #fafafa;
+    --text-secondary: #a1a1aa;
+    --success: #22c55e;
+    --warning: #eab308;
+    --error: #ef4444;
+  }
+  
+  /* Light Theme */
+  [data-theme="light"] {
+    --primary: #3b82f6;
+    --primary-dark: #2563eb;
+    --secondary: #6b7280;
+    --background: #f8fafc;
+    --surface: #e7e7e7;
+    --surface-light: #d6d6d6;
+    --text: #1e293b;
+    --text-secondary: #475569;
+    --success: #22c55e;
+    --warning: #eab308;
+    --error: #ef4444;
+  }
+  /* Base styles */
+  body {
+    font-family: "Inter", system-ui, -apple-system, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: var(--background);
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    color: var(--text);
+    font-size: 1.4rem;
+  }
+  .header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    background-color: var(--surface);
+    box-sizing: border-box;
+    height: 80px;
+    position: relative; /* Add this line */
+    justify-content: center;
+    align-content: center;
+}
+
+.header h1 {
+    margin: 0;
+    font-size: 24px;
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+.header button {
+    background-color: var(--primary);
+    color: var(--text);
+    padding: 0.53rem 1.06rem;
+    border-radius: 4px;
+    border: none;
+    font-weight: 500;
+    font-size: 1.15rem;
+    font-family: "Inter", system-ui, -apple-system, sans-serif;
+}
+
+.header button:hover {
+    background-color: var(--primary-dark);
+    cursor: pointer;
+}
+.header button:first-child {
+  position: absolute;
+  left: 20px;
+}
+
+.header button:last-child {
+  position: absolute;
+  right: 20px;
+}
+  /* Wrapper for content to apply the fade effect */
+  .content-wrapper {
+    position: relative;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  
+  /* Add transition to content wrapper for opacity */
+  .content-wrapper {
+    transition: opacity 0.3s ease-in-out;
+  }
+  
+  .page {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: flex-start;
+    gap: 2rem;
+    width: 100%;
+    box-sizing: border-box;
+    background-color: var(--background);
+  }
+
+.list-container {
+    flex: none;
+}
+
+#playerList {
+    margin-top: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: left;
+    background-color: var(--surface);
+    width: fit-content;
+    height: fit-content;
+    padding: 1rem;
+    border-radius: var(--radius);
+    color: var(--text-secondary);
+}
+
+h2{
+  font-size: 200px;
+}
+.settings-menu h2 {
+      color: var(--text);
+      margin-bottom: 1.32rem;
+      font-size: 2rem; 
+      font-weight: bold;
+      text-align: center;
+      margin-top: 0;
+  }
+
+.player-entry {
+    display: flex;
+    align-items: center;
+    padding: 10px;
+    background-color: var(--surface-light);
+    width: 400px;
+    justify-content: space-between;
+    font-size: 1.15rem;
+    margin: 0.45rem 0 0 0;
+    border-radius: var(--radius);
+    gap: 0.4rem;
+    width: 300px;
+    font-weight: 400;
+}
+
+.player-entry > div {
+  display: flex;
+  align-items: center;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  max-width: 220px;
+}
+.remove-player {
+  background-color: var(--error);
+  border: none;
+  cursor: pointer;
+  color: white;
+  width: 30px;
+  height: 30px;
+  border-radius: 4px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-left: 50px;
+  padding: 6px;
+}
+
+.remove-player:hover {
+    background-color: #dc2626;
+}
+.remove-player svg {
+  width: 100%;
+  height: 100%;
+}
+.remove-player:hover {
+  background-color: #dc2626;
+}
+
+.flag {
+    margin-right: 50px;
+    display: flex;
+}
+  
+  .flag-icon {
+    margin-right: 10px;
+  }
+  
+
+  #tournamentBracket {
+    display: flex;
+    gap: 40px;
+    padding: 30px;
+    align-items: center;
+    margin: 0 auto;
+    width: fit-content;
+ }
+#bracket {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+    gap: 20px;
+}
+
+#generateBracket {
+  position: absolute;
+  top: 2px;
+  left: 2px;
+  background: none;
+  color: var(--text);
+  padding: 0;
+  border: none;
+  font-size: 3rem;
+  cursor: pointer;
+  transition: transform 0.2s ease;
+  margin: 0;
+}
+
+#generateBracket:hover {
+  transform: translateY(-2px);
+}
+
+#generateBracket:active {
+  transform: translateY(0);
+}
+
+@keyframes rollDice {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+#generateBracket.rolling {
+  animation: rollDice 0.5s ease-out;
+}
+
+#bracket.page {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
+    width: 100%;
+    padding: 0px;
+    box-sizing: border-box;
+    position: relative;
+}
+.bracket-round {
+  display: flex;
+  flex-direction: column;
+  gap: var(--match-spacing);
+  height: 100%;
+
+}
+.match {
+  min-width: 300px;
+  margin: var(--match-spacing) 0;
+}
+  .match-connector {
+    border-right: 2px solid #000;
+    margin: 0 10px;
+  }
+  .match-players {
+    margin-top: 10px;
+  }
+  
+  .player {
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    flex: 1;
+}
+  
+  select.best-of {
+    width: 100%;
+    margin-bottom: 5px;
+  }
+  
+  .score-boxes {
+    display: flex;
+    gap: 5px;
+    flex-shrink: 0; /* Prevent score boxes from shrinking */
+}
+  
+  .player1-scores,
+  .player2-scores {
+    display: flex;
+    gap: 5px;
+  }
+  
+  .score-box {
+    width: 20px;
+    height: 20px;
+    border: 1px solid var(--text);
+    cursor: pointer;
+  }
+  
+  .score-box.won {
+    background-color: #4caf50;
+  }
+
+  h3{
+    margin-bottom: 10px;
+    font-size: 1.2rem;
+    font-weight: 500;
+    margin-top: 0px;
+  }
+  .round-header {
+    text-align: center;
+    width: 100%; /* Ensure it takes full width */
+    margin-bottom: 20px;
+}
+  .round-best-of{
+    width:120px;
+  } 
+  .player-container {
+    margin: 10px 0;
+    padding: 10px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: var(--surface-light);
+    gap: 1px;
+    min-width: 300px; /* Set a minimum width */
+    width: 300px; /* Force all containers to same width */
+}
+  .round-best-of {
+    margin-top: 5px;
+    padding: 5px;
+  }
+  
+  /* The overlay effect */
+  .settings-overlay {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background-color: rgba(0, 0, 0, 0.5);
+        opacity: 0; /* Initially hidden */
+        visibility: hidden; /* Initially hidden */
+        z-index: 999;
+        pointer-events: none; /* Initially unclickable */
+        transition: opacity 0.3s ease-in-out, visibility 0.3s ease-in-out; /* Add transitions */
+    }
+  
+  .settings-overlay.active {
+    opacity: 1; /* Make visible */
+    visibility: visible; /* Make visible */
+    pointer-events: auto;
+    z-index: 999;
+  }
+    
+    /* Setting Menu */
+    .settings-menu {
+      position: fixed;
+      top: 0;
+      left: -250px; /* Start off-screen to the left */
+      width: 250px;
+      height: 100%;
+      background-color: var(--surface);
+      padding: 1rem;
+      box-shadow: var(--shadow);
+      z-index: 11; /* Ensure its above the overlay */
+      overflow-y: auto; /* Allow scrolling for overflow content */
+      transition: left 0.3s ease-in-out; /* Add the transition */
+      display: flex;
+      flex-direction: column;
+    }
+    
+    .settings-menu.open {
+        left: 0; /* Slide in from the left */
+    }
+    
+    /* Settings Button */
+    .settings-button {
+          position: fixed;
+          left: 1.32rem;
+          bottom: 1.32rem;
+          z-index: 1000;
+          width: 42px;
+          height: 42px;
+          background-color: var(--primary);
+          border: none;
+          border-radius: var(--radius);
+          padding: 0.66rem;
+          margin: 0 !important;
+          cursor: pointer;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          transition: background-color 0.2s;
+      }
+    
+    .settings-button svg {
+      stroke: #ffffff;
+    }
+    
+    .settings-button:hover {
+      background-color: var(--primary-dark);
+    }
+    
+    .theme-options {
+      display: flex;
+      flex-direction: column;
+      gap: 0.5rem;
+    }
+    
+    .theme-options button {
+      padding: 0.5rem 1rem;
+      background-color: var(--surface-light);
+      border: none;
+      border-radius: var(--radius);
+      color: var(--text);
+      cursor: pointer;
+    }
+    
+    .theme-options button:hover {
+      background-color: var(--primary);
+    }
+
+    nav button {
+        background-color: var(--primary);
+        color: white;
+        padding: 0.53rem 1.06rem;
+        border-radius: 4px;
+        border: none;
+        margin-right: 1.32rem;
+        font-weight: 500;
+        font-size: 1.15rem;
+    }
+    
+
+
+
+    /* Dropdown Menu Styling */
+.round-best-of,
+#countrySelect,
+#themeSelect {
+    background-color: var(--surface);
+    color: var(--text);
+    padding: 0.53rem 1.06rem;
+    border: none;
+    border-radius: 4px;
+    font-size: 1.075rem;
+    cursor: pointer;
+    -webkit-appearance: none; /* Remove default styling on webkit browsers */
+    -moz-appearance: none; /* Remove default styling on Firefox */
+    appearance: none; /* Remove default styling on most modern browsers */
+    text-indent: 1px;
+    text-overflow: '';
+}
+.country-dropdown {
+  position: absolute;
+  border: 1px solid var(--surface-light);
+  border-top: none;
+  z-index: 10;
+  background-color: var(--surface);
+  max-height: 500px;
+  overflow-y: auto;
+  overflow-x: hidden;
+  width: 100%;
+  box-sizing: border-box;
+  border-bottom-left-radius: var(--radius);
+  border-bottom-right-radius: var(--radius);
+  display: none;
+  font-size: 18.4px;
+  scrollbar-width: normal;
+  scrollbar-color: var(--surface-light) var(--surface);
+  cursor: pointer;
+  max-height: 400px;
+
+}
+/* Add these as separate rules */
+.country-dropdown::-webkit-scrollbar {
+  width: 25px;
+}
+
+.country-dropdown::-webkit-scrollbar-track {
+  background: var(--surface);
+  border-radius: var(--radius);
+}
+
+.country-dropdown::-webkit-scrollbar-thumb {
+  background: var(--surface-light);
+  border-radius: var(--radius);
+}
+
+.country-dropdown::-webkit-scrollbar-thumb:hover {
+  background: var(--secondary);
+}
+/* Show the dropdown when the input is focused */
+#countrySearch:focus {
+  outline: 2px solid var(--secondary); /* Or a different color */
+  outline-offset: 1px; /* Optional */
+}
+
+.country-dropdown-item {
+  padding: 0.6rem;
+  cursor: pointer;
+  display: grid;
+  grid-template-columns: 30px 1fr;
+  gap: 0.4rem;
+  align-items: center;
+  background-color: var(--surface);
+  width: 100%;
+  box-sizing: border-box;
+  line-height: normal;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+.country-dropdown-item:hover {
+  background-color: var(--background);
+}
+/* Add a custom dropdown arrow */
+.round-best-of,
+#countrySelect,
+#themeSelect {
+    background-image:
+        linear-gradient(45deg, transparent 50%, var(--text) 50%),
+        linear-gradient(135deg, var(--text) 50%, transparent 50%);
+    background-position:
+        calc(100% - 20px) calc(1em + 2px),
+        calc(100% - 15px) calc(1em + 2px),
+        calc(100% - 2.5em) 0.5em;
+    background-size:
+        5px 5px,
+        5px 5px,
+        1px 1.5em;
+    background-repeat: no-repeat;
+}
+
+.round-best-of:focus,
+#countrySelect:focus,
+#themeSelect:focus {
+    outline: none;
+    box-shadow: 0 0 0 2px var(--primary); /* Add a focus ring */
+}
+
+.round-best-of:hover,
+#countrySelect:hover,
+#themeSelect:hover {
+    background-color: var(--surface-light);
+}
+
+.round-best-of option,
+#countrySelect option,
+#themeSelect option {
+    background-color: var(--surface);
+    color: var(--text);
+    padding: 0.5rem;
+}
+#themeSelect {
+    width: 100%;
+    background-color: var(--surface-light);
+}
+
+/* Styling for the flag icons in the dropdown */
+#countrySelect option .flag-icon {
+    vertical-align: middle; /* Align the flag with the text */
+    width: 1.33333333em; /* Set a fixed width for the flag */
+    height: 1em; /* Set a fixed height for the flag */
+}
+
+/* Styling for the country select and options */
+#countrySelect,
+#countrySelect option {
+    display: flex;
+    align-items: center;
+}
+
+#countrySelect option {
+    padding: 0.5rem;
+}
+
+#countrySelect option span.flag-icon {
+    vertical-align: middle !important; /* Align the flag with the text */
+    width: 1.33333333em !important; /* Set a fixed width for the flag */
+    height: 1em !important; /* Set a fixed height for the flag */
+    margin-right: 8px !important;
+}
+
+.form-container {
+    background-color: var(--surface);
+    padding: 1.32rem;
+    border-radius: 4px;
+    width: 22rem;
+    font-weight: 400 !important; /* Use !important as a last resort */
+}
+
+.form-group {
+  margin-bottom: 15px;
+  position: relative; /* Set to relative positioning */
+  line-height: 0.5;
+}
+
+.form-group label {
+  display: block;
+  margin-bottom: 0.66rem;
+  color: var(--text-secondary);
+  font-weight: 400;
+  font-size: 1.4rem; /* Add reasonable font-size here */
+}
+
+.playerName{
+  font-size: 200px;
+}
+#playerName:focus {
+  outline: 2px solid var(--secondary); /* Or a different color */
+  outline-offset: 1px; /* Optional */
+}
+
+#playerForm input,
+#playerForm select {
+    width: 93%;
+    padding: 0.6rem;
+    border-radius: 4px;
+    border: 1px solid var(--surface-light);
+    background-color: var(--surface-light);
+    color: var(--text);
+    font-size: 1rem;
+}
+
+.registration-container {
+    display: flex;
+    flex-direction: row;
+    gap: 20px;
+    justify-content: center;
+    align-items: flex-start;
+    margin-top: s;
+}
+#registration.page{
+  margin-top: 2rem;
+}
+
+.how-to-use {
+  margin-top: 20px;
+  color: var(--text-secondary);
+  padding: 10px;
+  border-radius: var(--radius);
+  background-color: var(--surface-light);
+  margin-bottom: 0rem;
+}
+h4{
+  margin-top: 0px;
+  margin-bottom: 10px;
+  font-size: 1.2rem;
+  font-weight: 500;
+}
+h5{
+  font-size: 10px;
+}
+.how-to-use ul {
+  list-style-type: disc;
+  padding-left: 20px;
+  margin-top: 0; /* Adjust this value as needed */
+  margin-bottom: 0; /* Adjust this value as needed */
+}
+
+/* For the nested list (submenu) */
+.how-to-use ul ul {
+  list-style-type: disc;
+  padding-left: 0px;
+}
+
+.how-to-use li {
+  margin-bottom: 10px;
+  color: var(--text-secondary);
+  font-size: 0.95rem;
+  line-height: 1.4;
+}
+.how-to-use dl {
+  padding-left: 0px;
+}
+
+.how-to-use dd {
+  margin-left: 0px;
+}
+
+/* Select2 Theming */
+.select2-container--default .select2-selection--single {
+  background-color: var(--surface-light) !important;
+  border: 1px solid var(--surface-light) !important;
+  padding: 0.6rem !important;
+  height: auto !important;
+}
+
+.select2-selection__rendered {
+  cursor: text !important;
+}
+
+.select2-container--default .select2-selection--single .select2-selection__arrow {
+  height: 26px;
+  position: absolute;
+  top: 5px;
+  right: 1px;
+  width: 20px;
+  height: 100% !important;
+  top: 0 !important;
+}
+
+.select2-dropdown {
+  background-color: var(--surface);
+  border: 1px solid var(--surface-light);
+  border-radius: 4px;
+  box-sizing: border-box;
+  display: block;
+  position: absolute;
+  left: -100000px;
+  width: 100%;
+  z-index: 1051;
+}
+
+.select2-results {
+  display: block;
+}
+
+.select2-results__options {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.select2-results__option {
+  padding: 6px;
+  user-select: none;
+  -webkit-user-select: none;
+}
+
+.select2-container--default .select2-results__option--highlighted[aria-selected] {
+  background-color: var(--primary);
+  color: white;
+}
+
+.select2-results__option[aria-selected=true] {
+  background-color: var(--surface-light);
+}
+
+.select2-container--default .select2-results__option[aria-disabled=true] {
+  color: var(--text-secondary);
+}
+
+.select2-results__option {
+  padding: 6px;
+  user-select: none;
+  -webkit-user-select: none;
+}
+
+
+.select2-search--dropdown .select2-search__field {
+  padding: 4px;
+  width: 100%;
+  box-sizing: border-box;
+  border: 1px solid var(--surface-light);
+  background-color: var(--surface-light);
+  color: var(--text);
+}
+
+.select2-search--dropdown .select2-search__field:focus {
+  outline: 0;
+  border: 1px solid var(--primary);
+}
+
+.select2-container--default .select2-results>.select2-results__options {
+  max-height: 200px;
+  overflow-y: auto;
+}
+.select2-container--default.select2-container--focus .select2-selection--single {
+  border-color: var(--surface-light);
+
+}
+.select2-container--default .select2-results__option--selected {
+  background-color: var(--primary-dark);
+}
+/* Make sure the flag is correctly displayed */
+.select2-container--default .select2-selection--single .select2-selection__rendered .flag-icon {
+  margin-right: 6px;
+  vertical-align: middle;
+  width: 1.33333333em;
+  height: 1em;
+}
+
+/* Make sure the flag is correctly displayed */
+.select2-container--default .select2-results__option .flag-icon {
+  margin-right: 6px;
+  vertical-align: middle;
+  width: 1.33333333em;
+  height: 1em;
+}
+
+.player-slot-label {
+  text-align: center;
+  font-size: 1.2em;
+  color: var(--text-secondary);
+  margin-bottom: 5px;
+  color: red;
+  display: none;
+}
+.select2-selection--clear .select2-selection__rendered {
+  color: var(--text-secondary) !important;
+}
+/* Styles for the Select2 search bar */
+
+.select2-container--default .select2-search--inline .select2-search__field {
+
+    width: auto !important; /* Ensure full width */
+    border: none !important;  /* Remove any default border */
+    outline: none !important; /* Remove outline on focus */
+    padding: 0.2rem 0 !important; /* Adjust padding if needed */
+    font-size: 1rem !important;
+    line-height: 1.5 !important;
+    margin-bottom: -0.4rem !important;
+  }
+  /* Hide the default Select2 search bar in the dropdown */
+.select2-search--dropdown {
+  display: none;
+}
+/* Style the placeholder to look like a search bar */
+.select2-container--default .select2-selection--single .select2-selection__rendered {
+  color: var(--text) !important; /* Make placeholder text visible */
+  line-height: 1.5 !important;
+  padding-left: 0.6rem; /* Adjust padding as needed */
+  min-height: 24px;
+  cursor: text !important; /* Make the cursor change to text input */
+}
+/* Make the placeholder clickable (add this rule) */
+.select2-container--default .select2-selection--single {
+  cursor: text !important; /* Change cursor to text input */
+}
+
+/* Remove extra padding from the main container */
+.select2-container--default .select2-selection--single {
+  padding: 0.6rem !important; /* Adjust padding as needed */
+}
+
+/* Style the search input field (add these rules) */
+.select2-search--inline .select2-search__field {
+  font-size: 1rem !important; /* Match your other text */
+  line-height: 1.5 !important; /* Match your other text */
+  outline: none !important; /* Remove the focus outline if you don't like it */
+  border: none !important; /* Remove border if necessary */
+  padding: 0 !important; /* Remove default padding */
+  background-color: transparent !important; /* Match the background */
+  width: auto !important; /* Allow the field to expand */
+}
+.settings-footer img {
+      width: 150px;
+      height: 150px;
+      border-radius: 50%; /* Make the image circular */
+      display: block; /* Makes the image a block-level element */
+      margin-left: auto;
+      margin-right: auto; /* Centers the image horizontally */
+  }
+  .settings-footer {
+        text-align: center; /* Center the image horizontally */
+        padding: 1rem; /* Add some padding around the image */
+    }
+
+    /* If the label is inside a container with class="form-container" */
+.form-container label[for="playerName"] {
+  font-weight: 200;
+}
+.winner {
+  background-color: rgb(131, 112, 5) !important;
+  transition: background-color 0.3s ease;
+}
+/* Adjust spacing based on round */
+[data-round="0"] {
+    --match-spacing: 20px;
+}
+
+[data-round="1"] {
+    --match-spacing: 60px;
+}
+
+[data-round="2"] {
+    --match-spacing: 140px;
+}
+
+[data-round="3"] {
+    --match-spacing: 300px;
+}
+
+[data-round="4"] {
+    --match-spacing: 620px;
+}
+.matches-container {
+  display: flex;
+  flex-direction: column;
+  gap: var(--match-spacing); /* Use the existing spacing variable */
+  width: 100%;
+  align-items: center;
+}
+.player.tbd {
+  font-weight: 100;
+}

@@ -1,0 +1,455 @@
+/* Modern color palette and variables */
+:root {
+    /* Common variables */
+    --radius: 3px;
+    --shadow: 0 2px 4px -1px rgb(0 0 0 / 0.1), 0 1px 2px -1px rgb(0 0 0 / 0.1);
+    transition: background-color 0.2s ease;
+}
+
+/* Dark Blue Theme (Default) */
+[data-theme="dark-blue"] {
+    --primary: #2563eb;
+    --primary-dark: #1d4ed8;
+    --secondary: #64748b;
+    --background: #0f172a;
+    --surface: #1e293b;
+    --surface-light: #334155;
+    --text: #f8fafc;
+    --text-secondary: #94a3b8;
+    --success: #22c55e;
+    --warning: #eab308;
+    --error: #ef4444;
+}
+/* Pink/Purple Theme */
+[data-theme="pink-purple"] {
+    --primary: #743d68;
+    --primary-dark: #4e2445;
+    --secondary: #ffffff;
+    --background: #dd85c3;
+    --surface: #b3649b;
+    --surface-light: #8a4e78;
+    --text: #fce7f3;
+    --text-secondary: #fbcfe8;
+    --success: #743d68;
+    --warning: #743d68;
+    --error: #743d68;
+}
+/* Dark Theme */
+[data-theme="dark"] {
+    --primary: #6366f1;
+    --primary-dark: #4f46e5;
+    --secondary: #71717a;
+    --background: #18181b;
+    --surface: #27272a;
+    --surface-light: #3f3f46;
+    --text: #fafafa;
+    --text-secondary: #a1a1aa;
+    --success: #22c55e;
+    --warning: #eab308;
+    --error: #ef4444;
+}
+
+/* Light Theme */
+[data-theme="light"] {
+    --primary: #3b82f6;
+    --primary-dark: #2563eb;
+    --secondary: #6b7280;
+    --background: #f8fafc;
+    --surface: #ffffff;
+    --surface-light: #d6d6d6;
+    --text: #1e293b;
+    --text-secondary: #475569;
+    --success: #22c55e;
+    --warning: #eab308;
+    --error: #ef4444;
+}
+/* Base styles */
+body {
+    font-family: 'Inter', system-ui, -apple-system, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: var(--background);
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    color: var(--text);
+    font-size: 18.4px;
+}
+
+.header-container {
+    width: 100%;
+    background-color: var(--surface);
+    box-shadow: var(--shadow);
+    position: relative;
+    height: 80px;
+    justify-content: center;
+    align-content: center;
+}
+
+h1 {
+    color: var(--text);
+    text-align: center;
+    margin: 0;
+    font-size: 24px;
+    font-weight: 700;
+}
+
+h2 {
+    font-size: 1.4rem;
+    margin: 0 0 0.8rem 0;
+    color: var(--text-secondary);
+}
+
+.nav-button {
+    position: absolute;
+    top: 1.32rem;
+    right: 1.32rem;
+    padding: 0.53rem 1.06rem;
+    background-color: var(--primary);
+    color: var(--text);
+    text-decoration: none;
+    border-radius: var(--radius);
+    font-weight: 500;
+    font-size: 1.15rem;
+    transition: background-color 0.2s;
+}
+.nav-button:hover {
+    background-color: var(--primary-dark); 
+}
+
+/* Layout containers */
+.page-container {
+    width: 100%;
+    max-width: 1190px;
+    padding: 0 1.32rem;
+    display: grid;
+    grid-template-columns: repeat(2, auto);
+    gap: 2rem;
+    justify-content: center;
+    align-items: start;
+    margin-top: 2rem;
+}
+
+.assignments-container {
+    background-color: var(--surface);
+    border-radius: var(--radius);
+    box-shadow: var(--shadow);
+    padding: 0.99rem;
+    height: fit-content;
+    min-height: 198px;
+    width: 270px;
+    justify-self: end;
+}
+
+.results-container {
+    background-color: var(--surface);
+    border-radius: var(--radius);
+    box-shadow: var(--shadow);
+    padding: 1.32rem;
+    height: fit-content;
+    width: fit-content;
+    justify-self: start;
+    position: relative;
+}
+
+/* Form styles */
+.point-input-container {
+    display: flex;
+    flex-direction: column;
+    gap: 0.46rem;
+    max-width: 199px;
+}
+
+.point-input {
+    background-color: var(--surface-light);
+    padding: 0.53rem;
+    border-radius: var(--radius);
+    width: 250px;
+}
+
+.player-select {
+    width: 100%;
+    padding: 0.33rem;
+    border: 1px solid var(--secondary);
+    border-radius: var(--radius);
+    background-color: var(--surface);
+    color: var(--text-secondary);
+    cursor: pointer;
+    font-size: 1.07rem;
+}
+
+.points-label {
+    display: block;
+    font-size: 0.93rem;
+    color: var(--text-secondary);
+    margin-top: 0.26rem;
+}
+
+/* Results table styles */
+.results-table {
+    width: auto;
+    min-width: 330px;
+    border-collapse: separate;
+    border-spacing: 0.4rem 0.4rem;
+    margin: 0 auto;
+    position: relative; 
+}
+
+
+/* Add these new styles */
+.rank-up {
+    stroke: var(--success);
+}
+
+.rank-down {
+    stroke: var(--error);
+}
+
+.results-table th {
+    padding: 0.66rem;
+    color: var(--text-secondary);
+    font-weight: 500;
+    font-size: 1.15rem;
+    white-space: nowrap;
+    text-align: left;
+}
+
+.results-table td {
+    padding: 0.6rem;
+    background-color: var(--surface-light);
+    border-radius: var(--radius);
+    font-size: 1.15rem;
+    white-space: nowrap;
+    text-align: center;
+    width: fit-content;
+}
+
+.rank-column {
+    width: 35px;
+    text-align: center !important;
+    font-weight: 600;
+    padding-left: 0 !important;
+    padding-right: 0 !important;
+}
+
+.player-column {
+    font-weight: 400;
+    text-align: left !important;
+    padding-left: 0.65rem !important;
+    padding-right: 0.65rem !important;
+    width: 20px;
+}
+
+.points-column {
+    width: 20px;
+    text-align: center !important;
+    font-weight: 600;
+    color: var(--text);
+    padding-left: 0.66rem !important;  /* Increased from 0.01rem */
+    padding-right: 0.66rem !important; /* Increased from 0.01rem */
+}
+
+/* Button styles */
+button {
+    padding: 0.66rem 1.32rem;
+    border: none;
+    border-radius: var(--radius);
+    color: var(--text);
+    font-weight: 500;
+    cursor: pointer;
+    transition: opacity 0.2s;
+    margin-top: 0.66rem;
+    width: 100%;
+    font-size: 1.15rem;
+}
+
+.standings-buttons {
+    display: flex;
+    gap: 0.66rem;
+    justify-content: center;
+    margin-top: 1.32rem;
+    padding-top: 1.32rem;
+    border-top: 1px solid var(--surface-light);
+}
+
+.revert-button,
+.redo-button {
+    background-color: #f97316; /* Orange-500 color */
+    margin: 0;
+    padding: 0.53rem 1.06rem;
+    font-size: 1.15rem;
+    width: auto;
+}
+.revert-button:hover,
+.redo-button:hover {
+    background-color: #ea580c; /* Orange-600 color for hover state */
+}
+/* Disabled button states */
+.revert-button:disabled,
+.redo-button:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+}
+
+.revert-button:disabled:hover,
+.redo-button:disabled:hover {
+    background-color: #f97316; /* Keep the same color when disabled */
+}
+#resetAllPointsButton {
+    background-color: var(--error);
+    margin: 0;
+    padding: 0.53rem 1.06rem;
+    font-size: 1.15rem;
+    width: auto;
+}
+
+#resetAllPointsButton:hover {
+    background-color: #dc2626; /* Darker red */
+}
+
+.reset-current-inputs-button {
+    background-color: var(--warning);
+    font-size: 0.99rem;
+}
+
+.reset-current-inputs-button:hover {
+    background-color: #ca8a04; /* Darker yellow */
+}
+form button[type="submit"],
+form button[type="button"]:not(.reset-current-inputs-button) {
+    background-color: var(--success);
+}
+
+
+.round-counter {
+    position: absolute;
+    top: 1.32rem;
+    right: 1.32rem;
+    color: var(--text-secondary);
+    font-size: 1.15rem;
+    font-weight: 500;
+}
+
+/* Responsive design */
+@media (max-width: 768px) {
+    .page-container {
+        grid-template-columns: 1fr;
+        gap: 1.32rem;
+        padding: 0.66rem;
+    }
+
+    .header-container {
+        padding: 1.32rem 0;
+    }
+
+    h1 {
+        font-size: 1.66rem;
+        margin-bottom: 0.66rem;
+    }
+
+    .standings-buttons {
+        flex-wrap: wrap;
+        gap: 0.33rem;
+    }
+
+    button {
+        padding: 0.53rem 1.06rem;
+        font-size: 1.07rem;
+    }
+}
+.h8{
+    margin-bottom:5px;
+    font-size: 200px;
+}
+.rank-change-column {
+    width: 10px; /* Adjust width as needed */
+    text-align: center;
+    position: relative; /* Add to allow absolute positioning of child */
+    padding: 0 !important;
+}
+.rank-change-indicator {
+    position: absolute;
+    /* Center horizontally within the cell */
+    left: 50%;
+    transform: translateX(-50%) translateY(-50%);
+    top: 50%;
+
+    /* Use either em/rem units or a fixed size, but not both */
+    /* Option 1: Relative to font-size */
+     width: 1em;  
+     height: 1em; 
+
+    /* Option 2: Fixed size (if you prefer) */
+    /*
+    width: 16px; 
+    height: 16px;
+    */
+    /* Remove fill and stroke from here */
+}
+
+.rank-up path {
+    stroke: var(--success);
+}
+
+.rank-down path {
+    stroke: var(--error);
+}
+
+.rank-same path { /* New style for no change */
+    stroke: var(--warning); /* Orange color */
+}
+.stacked-arrows {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    
+    gap: 0px;
+    width: 100%;
+}
+
+.rank-change-indicator {
+    flex-shrink: 0;
+    display: inline-block;
+}
+
+.rank-up path { stroke: var(--success); }
+.rank-same path { stroke: var(--warning); }
+.rank-down path { stroke: var(--error); }
+
+.rank-change-indicator {
+    position: static !important;
+    transform: none !important;
+    margin: 0 !important;
+    margin: 0 -3px !important; /* Negative margin between icons */
+
+}
+
+.rank-change-column {
+    background-color: transparent !important;
+    margin-left: -30px;
+}
+
+.rank-change-column td {
+    background-color: transparent !important;
+    padding: 0 !important;
+}
+.rank-change-column th {
+    background-color: transparent !important;
+    padding: 0 !important;
+}
+
+.points-column,
+.results-table td:nth-last-child(2) {
+    padding-right: 5px !important;
+    padding-left: 5px !important;
+}
+
+.results-table td:last-child {
+    padding-left: 0 !important;
+    margin-left: -25px !important;
+    background-color: var(--surface-light) !important;
+    padding-right: 0 !important;
+    width: 30px !important;
+}

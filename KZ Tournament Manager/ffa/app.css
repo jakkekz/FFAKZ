@@ -1,0 +1,450 @@
+/* Modern color palette and variables */
+:root {
+    /* Common variables */
+    --radius: 3px;
+    --shadow: 0 2px 4px -1px rgb(0 0 0 / 0.1), 0 1px 2px -1px rgb(0 0 0 / 0.1);
+    transition: background-color 0.2s ease;
+}
+
+/* Dark Blue Theme (Default) */
+[data-theme="dark-blue"] {
+    --primary: #2563eb;
+    --primary-dark: #1d4ed8;
+    --secondary: #64748b;
+    --background: #0f172a;
+    --surface: #1e293b;
+    --surface-light: #334155;
+    --text: #f8fafc;
+    --text-secondary: #94a3b8;
+    --success: #22c55e;
+    --warning: #eab308;
+    --error: #ef4444;
+    --error-dark:#ca2323;
+  }
+/* Pink/Purple Theme */
+[data-theme="pink-purple"] {
+    --primary: #743d68;
+    --primary-dark: #4e2445;
+    --secondary: #ffffff;
+    --background: #dd85c3;
+    --surface: #b3649b;
+    --surface-light: #8a4e78;
+    --text: #fce7f3;
+    --text-secondary: #fbcfe8;
+    --success: #743d68;
+    --warning: #743d68;
+    --error: #743d68;
+    --error-dark:#472540;
+}
+/* Dark Theme */
+[data-theme="dark"] {
+    --primary: #6366f1;
+    --primary-dark: #4f46e5;
+    --secondary: #71717a;
+    --background: #18181b;
+    --surface: #27272a;
+    --surface-light: #3f3f46;
+    --text: #fafafa;
+    --text-secondary: #a1a1aa;
+    --success: #22c55e;
+    --warning: #eab308;
+    --error: #ef4444;
+    --error-dark:#ca2323;
+}
+
+/* Light Theme */
+[data-theme="light"] {
+    --primary: #3b82f6;
+    --primary-dark: #2563eb;
+    --secondary: #6b7280;
+    --background: #f8fafc;
+    --surface: #e7e7e7;
+    --surface-light: #d6d6d6;
+    --text: #1e293b;
+    --text-secondary: #475569;
+    --success: #22c55e;
+    --warning: #eab308;
+    --error: #ef4444;
+    --error-dark:#ca2323;
+}
+/* Base styles */
+body {
+    font-family: 'Inter', system-ui, -apple-system, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: var(--background);
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    color: var(--text);
+    font-size: 18.4px;
+}
+
+.header-container {
+    width: 100%;
+    background-color: var(--surface);
+    box-shadow: var(--shadow);
+    position: relative;
+    height: 80px;
+    justify-content: center;
+    align-content: center;
+  }
+
+  .header-container h1 {
+    color: var(--text);
+    text-align: center;
+    margin: 0;
+    font-size: 24px;
+    font-weight: bold;
+  }
+
+  .header-container h2 {
+    font-size: 1.32rem;
+    margin: 0 0 0.26rem 0;  /* Currently has a bottom margin of ~4.2px */
+    color: var(--text-secondary);
+}
+.player-list h2 {
+    margin-bottom: 1rem;
+    margin-top: 0;
+    font-size: 1.4rem;
+    font-weight: 100;
+    color: var(--text-secondary);
+}
+
+  .nav-button {
+    position: absolute;
+    top: 1.32rem;
+    right: 1.32rem;
+    padding: 0.53rem 1.06rem;
+    background-color: var(--primary);
+    color: var(--text);
+    text-decoration: none;
+    border-radius: var(--radius);
+    font-weight: 500;
+    font-size: 1.15rem;
+    transition: background-color 0.2s;
+}
+
+.nav-button:hover {
+    background-color: var(--primary-dark);
+}
+/* Rest of the existing styles... */
+.page-content {
+    width: 100%;
+    max-width: 1190px;
+    padding: 0 1.32rem;
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    gap: 2rem;
+    margin-top: 2rem;
+}
+
+/* Form container styles */
+.form-container {
+    background-color: var(--surface);
+    padding: 1.32rem;
+    border-radius: 4px;
+    width: 22rem;
+    font-weight: 400 !important; /* Use !important as a last resort */
+}
+
+.form-container label {
+    display: block;
+    margin-bottom: 0.66rem;
+    color: var(--text-secondary);
+    font-size: 1.4rem;
+    font-weight: 200 !important;
+    margin-bottom: 4px;
+}
+
+.form-container input,
+.form-container select,
+.country-search {
+    width: 100%;
+    padding: 0.6rem !important;
+    margin-bottom: 0rem;
+    background-color: var(--surface-light);
+    color: var(--text);
+    font-size: 1rem;
+    box-sizing: border-box;
+}
+
+.select-wrapper {
+    width: 100%;
+    box-sizing: border-box;
+}
+
+.form-container input:focus,
+.form-container select:focus {
+    outline: none;
+    border-color: var(--primary);
+}
+
+/* Player list styles */
+.player-list {
+    background-color: var(--surface);
+    padding: 1rem;
+    border-radius: var(--radius);
+    box-shadow: var(--shadow);
+    width: fit-content;
+    max-width: 1000px;
+    /* margin: 0; */
+    box-sizing: border-box;
+    height: fit-content;
+}
+.select-wrapper option {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.5rem;
+}
+
+.select-wrapper .flag-icon {
+    margin-right: 0.5rem;
+}
+.player-item {
+    padding: 10px;
+    background-color: var(--surface-light);
+    margin: 0.45rem 0 0 0;
+    border-radius: var(--radius);
+    display: flex;
+    align-items: center;
+    gap: 0.4rem;
+    font-size: 1.15rem;
+    width: 300px;
+    font-weight: 100;
+}
+
+.flag-icon {
+    margin-right: 0.46rem;
+    font-size: 1.15rem;
+}
+
+/* Remove button styles */
+.delete-player {
+    background-color: var(--error);
+    border: none;
+    cursor: pointer;
+    color: white;
+    width: 30px;
+    height: 30px;
+    border-radius: 4px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 6px;
+    margin-left: auto;
+
+}
+
+.delete-player svg {
+    width: 100%;
+    height: 100%;
+}
+
+.delete-player:hover {
+    background-color: var(--error-dark);
+}
+
+/* Country select styles */
+.country-search {
+    width: 100%;
+    padding: 0.53rem;
+    margin-bottom: 0rem;
+    border-radius: var(--radius);
+    background-color: var(--surface-light);
+    color: var(--text);
+    font-size: 1.07rem;
+    border: none;  /* Remove default border */
+}
+
+.country-search:focus {
+    border: 1px solid var(--secondary);
+    outline: 1px;
+}
+
+/* Add these new styles */
+.how-to-section {
+    margin-top: 20px;
+    color: var(--text-secondary);
+    padding: 10px;
+    border-radius: var(--radius);
+    background-color: var(--surface-light);
+    margin-bottom: 0rem;
+}
+
+dd {
+    margin-left: 0px;
+}
+
+.how-to-section h4 {
+    color: var(--text-secondary);
+    margin-bottom: 10px;
+    font-size: 1.2rem;
+    font-weight: 500;
+    margin-top: 0px;
+}
+
+.how-to-section ol {
+    list-style-type: decimal;
+    padding-left: 20px;
+    margin-bottom: 0; /* Remove default bottom margin */
+}
+
+.how-to-section li {
+    margin-bottom: 8px;
+    font-size: 0.95rem;
+    line-height: 1.4;
+    padding-left: 0px;
+}
+.how-to-section ul {
+padding-left: 20px;
+margin-bottom: 0px;
+}
+
+.how-to-section strong {
+    font-weight: 600;
+}
+
+.how-to-section br {
+    content: "";
+    margin: 0.5em;
+    display: block;
+    font-size: 24%;
+}
+
+.how-to-section .warning { /* Style for the warning message */
+    margin-top: 10px;
+    font-size: 0.95rem;
+    color: var(--text-secondary);
+}
+
+.custom-dropdown {
+    position: relative;
+    width: 100%;
+}
+
+.dropdown-container {
+    position: absolute;
+    width: 310px;
+    max-height: 200px;
+    overflow-y: auto;
+    background-color: var(--surface);
+    border: 1px solid var(--surface-light);
+    border-radius: var(--radius);
+    z-index: 1000;
+    margin-top: 4px;
+}
+
+.dropdown-option {
+    padding: 0.66rem;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-size: 5rem !important;
+    color: red !important;
+}
+
+.dropdown-option:hover {
+    background-color: var(--surface-light);
+}
+
+.dropdown-option .flag-icon {
+    margin-right: 0.5rem;
+}
+
+
+
+
+
+/* Responsive design */
+@media (max-width: 768px) {
+    .page-content {
+        padding: 0 0.66rem;
+    }
+
+    .form-container,
+    .player-list {
+        width: 100%;
+        margin: 0 0 2rem 0;
+        padding: 1rem;
+    }
+    .player-count {
+        color: var(--text-secondary);
+        font-weight: normal;
+        font-size: 1rem;
+        content: "";
+    }
+    
+    .header-container {
+        padding: 1.32rem 0;
+    }
+
+    h1 {
+        font-size: 1.66rem;
+        margin-bottom: 0.66rem;
+    }
+
+    .nav-button {
+        top: 1.32rem;
+        right: 1.32rem;
+        padding: 0.53rem 1.06rem;
+        font-size: 1.07rem;
+    }
+
+    .page-content {
+        padding: 0 1rem;
+    }
+}
+
+/* If the label is inside a container with class="form-container" */
+.form-container label[for="playerName"] {
+    font-weight: 200;
+  }
+
+  /* Custom scrollbar styles */
+.options-container::-webkit-scrollbar {
+    width: 25px;
+}
+
+.options-container::-webkit-scrollbar-track {
+    background: var(--surface);
+    border-radius: var(--radius);
+}
+
+.options-container::-webkit-scrollbar-thumb {
+    background: var(--surface-light);
+    border-radius: var(--radius);
+}
+
+.options-container::-webkit-scrollbar-thumb:hover {
+    background: var(--secondary);
+}
+.options-container {
+    scrollbar-width: normal;
+    scrollbar-color: var(--surface-light) var(--surface);
+    background-color: var(--surface) !important;
+}
+
+#playerName {
+    border: none;
+    outline: none;
+    border-radius: 4px;
+    margin-bottom: 10px;
+  }
+
+  input:-webkit-autofill,
+  input:-webkit-autofill:hover,
+  input:-webkit-autofill:focus,
+  input {
+      -webkit-appearance: none;
+      box-shadow: 0 0 0 0px var(--surface-light) inset !important;
+  }
+  
+  input:focus {
+      outline: 1px solid var(--secondary) !important; /* Use outline instead of border */
+      border: none !important; /* Remove any existing border */
+  }
